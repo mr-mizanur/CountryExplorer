@@ -14,25 +14,25 @@ const Countries = ({ countriesPromise }) => {
     const countriesData = use(countriesPromise)
     const countries = countriesData.countries;
 
-    return (
-        <div>
-            <h1>In the countries: {countries.length}</h1>
+  return (
+  <div>
+            <h1>🌍 Total Countries:  {countries.length}</h1>
 
-            <h3>Total Country Visited: {visitedCountry.length}</h3>
+    <h3>✈️ Countries You Visited: {visitedCountry.length}</h3>
 
             <div className='countries'>
                 {
                     countries.map(country => (
                         <Country
-                            key={country.cca3}
+            key={country.cca3}
                             country={country}
                             handleVisitedCountries={handleVisitedCountries}
                         />
                     ))
                 }
-            </div>
-        </div>
-    );
+    </div>
+  </div>
+);
 };
 
 export default Countries;
