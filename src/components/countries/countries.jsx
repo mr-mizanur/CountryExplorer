@@ -3,31 +3,34 @@ import Country from '../country/country';
 import './countries.css'
 
 const Countries = ({ countriesPromise }) => {
-    const [visitedCountry,setVisitedCountry ] = useState([ ]);
 
-    const handleVisitedCountries =() =>{
-        console.log('hello')
+    const [visitedCountry, setVisitedCountry] = useState([]);
+
+    const handleVisitedCountries = (country) => {
+        const newVisitedCountries = [...visitedCountry, country];
+        setVisitedCountry(newVisitedCountries);
     }
-    const countriesData = use(countriesPromise)
 
+    const countriesData = use(countriesPromise)
     const countries = countriesData.countries;
-    
-   
 
     return (
-        <div >
+        <div>
             <h1>In the countries: {countries.length}</h1>
-            <h3>Total Country Visited:</h3>
-           <div className='countries'>
-             {
-                countries.map(country => (
-                    <Country country={country}
-                    key={country.cca3}
-                    handleVisitedCountries={handleVisitedCountries}
-                    ></Country>
-                ))
-            }
-           </div>
+
+            <h3>Total Country Visited: {visitedCountry.length}</h3>
+
+            <div className='countries'>
+                {
+                    countries.map(country => (
+                        <Country
+                            key={country.cca3}
+                            country={country}
+                            handleVisitedCountries={handleVisitedCountries}
+                        />
+                    ))
+                }
+            </div>
         </div>
     );
 };
